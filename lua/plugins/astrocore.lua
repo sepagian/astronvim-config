@@ -106,7 +106,7 @@ return {
         -- find highlight groups
         ["<Leader>fH"] = {
           function() require("snacks").picker.highlight() end,
-          desc = "Find Hightlights",
+          desc = "Find Highlights",
         },
 
         -- tables with just a `desc` key will be registered with which-key if it's installed
