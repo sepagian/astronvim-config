@@ -1,12 +1,39 @@
 --- @type LazySpec
 return {
   {
-    "Saghen/blink.cmp",
+    "saghen/blink.compat",
+    version = "2.*",
+    lazy = true,
+    opts = {
+      -- This is a compatibility layer for Blink CMP v2
+      -- It allows using the new Blink CMP v3 features while maintaining compatibility with v2
+      -- It is recommended to use the latest version of Blink CMP for new projects
+      -- but this compatibility layer can be useful for existing projects that need to be updated gradually
+      compat = true,
+    },
+  },
+  {
+    "Exafunction/windsurf.nvim",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "hrsh7th/nvim-cmp",
+    },
+    config = function()
+      require("codeium").setup {
+        -- This is a compatibility layer for Blink CMP v2
+        -- It allows using the new Blink CMP v3 features while maintaining compatibility with v2
+        compat = true,
+      }
+    end,
+  },
+  {
+    "saghen/blink.cmp",
     dependencies = {
       "rafamadriz/friendly-snippets",
       "giuxtaposition/blink-cmp-copilot",
       "moyiz/blink-emoji.nvim",
       "jdrupal-dev/css-vars.nvim",
+      "Exafunction/windsurf.nvim",
     },
     version = "1.*",
     ---@module "blink-cmp"
@@ -58,6 +85,7 @@ return {
           "copilot",
           "emoji",
           "css_vars",
+          "codeium",
         },
         providers = {
           copilot = {
@@ -76,6 +104,11 @@ return {
             name = "css-vars",
             module = "css-vars.blink",
             score_offset = 50,
+            async = true,
+          },
+          codeium = {
+            name = "Codeium",
+            module = "blink.compat.source",
             async = true,
           },
           path = { opts = { trailing_slash = false, show_hidden_files_by_default = true } },
