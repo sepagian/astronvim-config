@@ -23,12 +23,12 @@ return {
                 require("rainbow-delimiters").toggle(bufnr)
                 require("astrocore").notify(
                   string.format(
-                    "Buffer rainbow delimeters %s",
+                    "Buffer rainbow delimiters %s",
                     require("rainbow-delimiters").is_enabled(bufnr) and "on" or "off"
                   )
                 )
               end,
-              desc = "Toggle rainbow delimeters (buffer)",
+              desc = "Toggle rainbow delimiters (buffer)",
             },
           },
         },
