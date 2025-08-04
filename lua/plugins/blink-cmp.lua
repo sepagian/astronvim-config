@@ -42,10 +42,17 @@ return {
               },
             },
           },
-          auto_show = false,
+          auto_show = true,
+        },
+        keyword = {
+          range = "full",
         },
         ghost_text = {
-          enabled = true,
+          enabled = false,
+          show_with_selection = true,
+          show_without_selection = false,
+          show_with_menu = true,
+          show_without_menu = true,
         },
         trigger = {
           auto = true,
@@ -89,6 +96,18 @@ return {
             module = "css-vars.blink",
             score_offset = 50,
             async = true,
+          },
+          {
+            buffer = {
+              opts = {
+                get_bufnrs = function()
+                  return vim.tbl_filter(
+                    function(bufnr) return vim.bo[bufnr].buftype == "" end,
+                    vim.api.nvim_list_bufs()
+                  )
+                end,
+              },
+            },
           },
           path = { opts = { trailing_slash = false, show_hidden_files_by_default = true } },
         },
