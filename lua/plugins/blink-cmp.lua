@@ -122,22 +122,11 @@ return {
             score_offset = 50,
             async = true,
           },
-          {
-            buffer = {
-              opts = {
-                get_bufnrs = function()
-                  return vim.tbl_filter(
-                    function(bufnr) return vim.bo[bufnr].buftype == "" end,
-                    vim.api.nvim_list_bufs()
-                  )
-                end,
-              },
-            },
-          },
           path = {
             opts = {
               trailing_slash = false,
               show_hidden_files_by_default = true,
+              get_cwd = function(_) return vim.fn.getcwd() end,
             },
           },
         },
