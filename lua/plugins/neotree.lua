@@ -3,7 +3,7 @@ return {
   "nvim-neo-tree/neo-tree.nvim",
   opts = {
     window = {
-      position = "left",
+      position = "float",
     },
     popup_border_style = "rounded",
     enable_diagnostics = true,
