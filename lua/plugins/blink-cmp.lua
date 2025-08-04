@@ -138,7 +138,6 @@ return {
             opts = {
               trailing_slash = false,
               show_hidden_files_by_default = true,
-              get_cwd = function(_) return vim.fn.getcwd() end,
             },
           },
         },
