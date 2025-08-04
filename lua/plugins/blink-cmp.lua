@@ -40,6 +40,24 @@ return {
                 text = function(ctx) return require("colorful-menu").blink_components_text(ctx) end,
                 highlight = function(ctx) return require("colorful-menu").blink_components_highlight(ctx) end,
               },
+              kind_icon = {
+                text = function(ctx)
+                  local kind_icon, _, _ = require("mini.icons").get("lsp", ctx.kind)
+                  return kind_icon
+                end,
+                -- (optional) use highlights from mini.icons
+                highlight = function(ctx)
+                  local _, hl, _ = require("mini.icons").get("lsp", ctx.kind)
+                  return hl
+                end,
+              },
+              kind = {
+                -- (optional) use highlights from mini.icons
+                highlight = function(ctx)
+                  local _, hl, _ = require("mini.icons").get("lsp", ctx.kind)
+                  return hl
+                end,
+              },
             },
           },
           auto_show = true,
@@ -84,6 +102,13 @@ return {
             module = "blink-cmp-copilot",
             score_offset = 100,
             async = true,
+            transform_items = function(ctx, items)
+              for _, item in ipairs(items) do
+                item.kind_icon = ""
+                item.kind_name = "Copilot"
+              end
+              return items
+            end,
           },
           emoji = {
             name = "Emoji",
@@ -109,7 +134,13 @@ return {
               },
             },
           },
-          path = { opts = { trailing_slash = false, show_hidden_files_by_default = true } },
+          path = {
+            opts = {
+              trailing_slash = false,
+              show_hidden_files_by_default = true,
+              get_cwd = function(_) return vim.fn.getcwd() end,
+            },
+          },
         },
       },
       signature = { enabled = true },
