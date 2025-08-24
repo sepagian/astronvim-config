@@ -22,13 +22,40 @@ return {
           max_tokens = 20480,
         },
       },
-              openai = {
-                endpoint = "https://api.openai.com/v1/engines",
-                model = "text-davinci-003",
-                timeout = 30000, -- Timeout in milliseconds
+      openai = {
+        endpoint = "https://api.openai.com/v1/engines",
+        model = "text-davinci-003",
+        timeout = 30000, -- Timeout in milliseconds
+        extra_request_body = {
+          temperature = 0.5,
+          max_tokens = 1500,
+        },
+      },
+              kimi = {
+                endpoint = "https://api.kimi.com",
+                model = "kimi-transformer-2025",
+                timeout = 30000,
                 extra_request_body = {
-                  temperature = 0.5,
-                  max_tokens = 1500,
+                  temperature = 0.6,
+                  max_tokens = 10000,
+                },
+              },
+              openrouter = {
+                endpoint = "https://api.openrouter.ai",
+                model = "openrouter-nextgen",
+                timeout = 25000,
+                extra_request_body = {
+                  temperature = 0.7,
+                  max_tokens = 12000,
+                },
+              },
+              copilot = {
+                endpoint = "https://api.copilot.net",
+                model = "copilot-gpt-4",
+                timeout = 20000,
+                extra_request_body = {
+                  temperature = 0.65,
+                  max_tokens = 8000,
                 },
               },
     },
