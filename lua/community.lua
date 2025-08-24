@@ -23,7 +23,6 @@ local function import_snippet(name) table.insert(specs, { import = "astrocommuni
 local function import_completion(name) table.insert(specs, { import = "astrocommunity.completion." .. name }) end
 -- 📦 Use them here
 import_pack "lua"
-import_colorscheme "catppuccin"
 import_pack "astro"
 import_pack "biome"
 import_pack "html-css"
@@ -32,6 +31,8 @@ import_pack "svelte"
 import_pack "tailwindcss"
 import_pack "typescript-all-in-one"
 import_pack "vue"
+import_colorscheme "catppuccin"
+import_colorscheme "tokyonight-nvim"
 
 import_recipe "astrolsp-no-insert-inlay-hints"
 import_recipe "diagnostic-virtual-lines-current-line"
