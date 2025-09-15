@@ -16,10 +16,9 @@ return {
     "saghen/blink.cmp",
     dependencies = {
       "rafamadriz/friendly-snippets",
-      "giuxtaposition/blink-cmp-copilot",
       "moyiz/blink-emoji.nvim",
       "jdrupal-dev/css-vars.nvim",
-      "Kaiser-Yang/blink-cmp-avante",
+      "Exafunction/codeium.nvim",
     },
     version = "1.*",
     ---@module "blink-cmp"
@@ -93,37 +92,16 @@ return {
           "path",
           "snippets",
           "buffer",
-          "copilot",
+          "codeium",
           "emoji",
           "css_vars",
-          "avante",
         },
         providers = {
-          avante = {
-            name = "Avante",
-            module = "blink-cmp-avante",
-            score_offset = 200,
+          codeium = {
+            name = "Codeium",
+            module = "codeium.blink",
             async = true,
-            transform_items = function(ctx, items)
-              for _, item in ipairs(items) do
-                item.kind_icon = ""
-                item.kind_name = "Avante"
-              end
-              return items
-            end,
-          },
-          copilot = {
-            name = "Copilot",
-            module = "blink-cmp-copilot",
             score_offset = 100,
-            async = true,
-            transform_items = function(ctx, items)
-              for _, item in ipairs(items) do
-                item.kind_icon = ""
-                item.kind_name = "Copilot"
-              end
-              return items
-            end,
           },
           emoji = {
             name = "Emoji",
