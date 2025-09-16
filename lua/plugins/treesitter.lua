@@ -1,11 +1,11 @@
--- Customize Treesitter
-
 ---@type LazySpec
 return {
-  "nvim-treesitter/nvim-treesitter",
-  opts = {
-    indent = {
-      disable = { "yaml" },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      indent = {
+        disable = { "yaml" },
+      },
     },
   },
 }
