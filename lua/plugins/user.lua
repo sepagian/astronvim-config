@@ -8,35 +8,14 @@ return {
   -- == Examples of Adding Plugins ==
 
   "andweeb/presence.nvim",
+  "max397574/better-escape.nvim",
+
   {
     "ray-x/lsp_signature.nvim",
     event = "BufRead",
     config = function() require("lsp_signature").setup() end,
   },
 
-  -- == Examples of Overriding Plugins ==
-
-  -- customize dashboard options
-  {
-    "folke/snacks.nvim",
-    opts = {
-      dashboard = {
-        enabled = true,
-        sections = {
-          {
-            pane = 1,
-            { section = "keys", gap = 1, padding = 1 },
-            { section = "startup" },
-          },
-        },
-      },
-    },
-  },
-
-  -- You can disable default plugins as follows:
-  { "max397574/better-escape.nvim", enabled = true },
-
-  -- You can also easily customize additional setup of plugins that is outside of the plugin's setup call
   {
     "L3MON4D3/LuaSnip",
     config = function(plugin, opts)
@@ -76,6 +55,7 @@ return {
       )
     end,
   },
+
   {
     "Exafunction/windsurf.nvim",
     dependencies = {
@@ -83,5 +63,97 @@ return {
       "hrsh7th/nvim-cmp",
     },
     config = function() require("codeium").setup {} end,
+  },
+
+  {
+    "folke/flash.nvim",
+    event = "VeryLazy",
+    ---@type Flash.Config
+    opts = {},
+    keys = {
+      { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+      { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+      { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
+      { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+      { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+    },
+  },
+
+  {
+    "stevearc/aerial.nvim",
+    event = "VeryLazy",
+    opts = {
+      -- Prefer treesitter or LSP as source
+      backends = { "lsp", "treesitter", "markdown", "man" },
+
+      layout = {
+        max_width = { 40, 0.2 }, -- 40 cols or 20% of screen
+        min_width = 40,
+        default_direction = "prefer_right",
+      },
+
+      show_guides = true, -- indent guides in outline
+      highlight_mode = "full_width",
+      highlight_on_hover = true,
+
+      -- auto open/close on LSP attach
+      attach_mode = "global",
+      close_automatic_events = { "unsupported" },
+    },
+    keys = {
+      { "<leader>a", "<cmd>AerialToggle!<CR>", desc = "Toggle Aerial outline" },
+      { "[[", "<cmd>AerialPrev<CR>", desc = "Prev symbol" },
+      { "]]", "<cmd>AerialNext<CR>", desc = "Next symbol" },
+    },
+  },
+
+  {
+    "lewis6991/gitsigns.nvim",
+    event = "BufRead",
+    opts = {
+      signs = {
+        add = { text = "+" },
+        change = { text = "~" },
+        delete = { text = "_" },
+        topdelete = { text = "‾" },
+        changedelete = { text = "~" },
+      },
+      current_line_blame = true, -- show git blame inline
+    },
+  },
+
+  {
+    "sindrets/diffview.nvim",
+    cmd = {
+      "DiffviewOpen",
+      "DiffviewClose",
+      "DiffviewToggleFiles",
+      "DiffviewFocusFiles",
+      "DiffviewFileHistory",
+    },
+    opts = {
+      enhanced_diff_hl = true,
+      view = {
+        default = {
+          winbar_info = true,
+        },
+        merge_tool = {
+          layout = "diff3_mixed",
+        },
+      },
+      file_panel = {
+        listing_style = "tree",
+        win_config = {
+          position = "left",
+          width = 35,
+        },
+      },
+    },
+    keys = {
+      { "<leader>gd", "<cmd>DiffviewOpen<cr>", desc = "Diffview Open" },
+      { "<leader>gD", "<cmd>DiffviewClose<cr>", desc = "Diffview Close" },
+      { "<leader>gh", "<cmd>DiffviewFileHistory %<cr>", desc = "File History" },
+      { "<leader>gH", "<cmd>DiffviewFileHistory<cr>", desc = "Project History" },
+    },
   },
 }
