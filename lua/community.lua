@@ -49,8 +49,6 @@ import_motion "mini-jump"
 import_motion "mini-bracketed"
 import_motion "nvim-surround"
 
-import_scrolling "vim-smoothie"
-
 import_snippet "nvim-snippets"
 
 import_completion "blink-cmp-emoji"

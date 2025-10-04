@@ -5,10 +5,6 @@ return {
     version = "2.*",
     lazy = true,
     opts = {
-      -- This is a compatibility layer for Blink CMP v2
-      -- It allows using the new Blink CMP v3 features while maintaining compatibility with v2
-      -- It is recommended to use the latest version of Blink CMP for new projects
-      -- but this compatibility layer can be useful for existing projects that need to be updated gradually
       compat = true,
     },
   },
