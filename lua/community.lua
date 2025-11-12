@@ -16,8 +16,6 @@ local function import_colorscheme(name) table.insert(specs, { import = "astrocom
 
 local function import_keybinding(name) table.insert(specs, { import = "astrocommunity.keybinding." .. name }) end
 
-local function import_scrolling(name) table.insert(specs, { import = "astrocommunity.scrolling." .. name }) end
-
 local function import_snippet(name) table.insert(specs, { import = "astrocommunity.snippet." .. name }) end
 
 local function import_completion(name) table.insert(specs, { import = "astrocommunity.completion." .. name }) end
@@ -31,6 +29,8 @@ import_pack "svelte"
 import_pack "tailwindcss"
 import_pack "typescript-all-in-one"
 import_pack "vue"
+import_pack "markdown"
+
 import_colorscheme "catppuccin"
 import_colorscheme "tokyonight-nvim"
 
